@@ -9,6 +9,8 @@ module.exports.productsController = {
         brand: brand,
         category: category,
       });
+
+      res.json("Продукт добавлен");
     } catch (e) {
       res.json(`Добавление продукта не удалось из-за ошибки ${e}`);
     }
