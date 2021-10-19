@@ -4,9 +4,9 @@ const { reviewsController } = require('../controllers/reviews.controller')
 const router = Router();
 
 router.get("/", reviewsController.getReviews);
-router.post("/", reviewsController.postReviews);
-router.delete("/admin/:id", reviewsController.deleteReviews);
-router.patch("/:id", reviewsController.patchReviews);
+router.post("/", reviewsController.addReview);
+router.delete("/admin/:id", reviewsController.deleteReview);
+router.patch("/:id", reviewsController.patchReview);
 
 
 module.exports = router;
