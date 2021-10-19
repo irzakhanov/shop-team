@@ -42,6 +42,7 @@ module.exports.reviewsController = {
         req.params.id,
         { $set: req.body }
       );
+      res.json('Изменён')
     } catch (e) {
       return res.json(e);
     }
