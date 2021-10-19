@@ -25,6 +25,8 @@ module.exports.cartsController = {
         { user: req.params.userId },
         { $pull: { products: req.params.productId } }
       );
+
+      res.json("Продукт удален из корзины");
     } catch (e) {
       res.json(e);
     }
