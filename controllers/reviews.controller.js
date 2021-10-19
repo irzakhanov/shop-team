@@ -8,12 +8,20 @@ module.exports.reviewsController = {
       return res.json(e);
     }
   },
+  getReviewsProduct: async (req ,res) => {
+    try {
+      const reviewGet = await Review.find({product: req.params.productId});
+      return res.json(reviewGet);
+    } catch (e) {
+      return res.json(e);
+    }
+  },
   addReview: async (req, res) => {
     try {
       await Review.create({
         text: req.body.text,
-        user: req.params.id,
-        product: req.params.id,
+        user: req.params.userId,
+        product: req.params.productId,
       });
       return res.json("Добавлено");
     } catch (e) {
