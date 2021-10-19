@@ -24,6 +24,24 @@ module.exports.productsController = {
       res.json(`Вывести все продукты не удалось из-за ошибки ${e}`);
     }
   },
+  getProductsByCategory: async (req, res) => {
+    try {
+      const products = await Product.find({ category: req.params.id });
+
+      res.json(products);
+    } catch (e) {
+      res.json(e);
+    }
+  },
+  getProductsByBrand: async (req, res) => {
+    try {
+      const products = await Product.find({ brand: req.params.id });
+
+      res.json(products);
+    } catch (e) {
+      res.json(e);
+    }
+  },
   getProductByID: async (req, res) => {
     try {
       const product = await Product.findById(req.params.id);

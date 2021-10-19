@@ -1,7 +1,7 @@
 const Cart = require("../models/Cart.model");
 
 module.exports.cartsController = {
-  addCart: async (req, res) => {
+  addToCart: async (req, res) => {
     try {
       const cart = await Cart.findOne({ user: req.params.userId });
       if (!cart) {
@@ -15,6 +15,16 @@ module.exports.cartsController = {
       );
 
       res.json("Продукт добавлен в корзину");
+    } catch (e) {
+      res.json(e);
+    }
+  },
+  removeCartItem: async (req, res) => {
+    try {
+      await Cart.updateOne(
+        { user: req.params.userId },
+        { $pull: { products: req.params.productId } }
+      );
     } catch (e) {
       res.json(e);
     }
