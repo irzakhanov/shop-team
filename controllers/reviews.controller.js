@@ -8,9 +8,9 @@ module.exports.reviewsController = {
       return res.json(e);
     }
   },
-  getReviewsProduct: async (req ,res) => {
+  getReviewsProduct: async (req, res) => {
     try {
-      const reviewGet = await Review.find({product: req.params.productId});
+      const reviewGet = await Review.find({ product: req.params.productId });
       return res.json(reviewGet);
     } catch (e) {
       return res.json(e);
@@ -38,11 +38,8 @@ module.exports.reviewsController = {
   },
   patchReview: async (req, res) => {
     try {
-      await Review.findByIdAndUpdate(
-        req.params.id,
-        { $set: req.body }
-      );
-      res.json('Изменён')
+      await Review.findByIdAndUpdate(req.params.id, { $set: req.body });
+      res.json("Изменён");
     } catch (e) {
       return res.json(e);
     }
