@@ -8,7 +8,7 @@ module.exports.reviewsController = {
       return res.json(e);
     }
   },
-  postReviews: async (req, res) => {
+  addReview: async (req, res) => {
     try {
       await Review.create({
         text: req.body.text,
@@ -20,7 +20,7 @@ module.exports.reviewsController = {
       return res.json(e);
     }
   },
-  deleteReviews: async (req, res) => {
+  deleteReview: async (req, res) => {
     try {
       await Review.findByIdAndRemove(req.params.id);
       return res.json("Удалено");
@@ -28,7 +28,7 @@ module.exports.reviewsController = {
       return res.json(e);
     }
   },
-  patchReviews: async (req, res) => {
+  patchReview: async (req, res) => {
     try {
       await Review.findByIdAndUpdate(
         req.params.id,
